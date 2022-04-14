@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.defineProperty</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+    
+</body>
+<script type="text/javascript">
+    let number = 18
+    let person = {
+        name: 'leesper',
+        sex: 'male',
+    }
+
+    // Object.defineProperty(person, 'age', {
+    //     value: 18,
+    //     enumerable: true, // can be enumerated
+    //     writable: true, // can be written
+    //     configurable: true, // can be deleted
+    // })
+
+    Object.defineProperty(person, 'age', {
+        // getter
+        get () {
+            return number
+        },
+        // setter
+        set (val) {
+            number = val
+        }
+    })
+
+    console.log(person.age)
+    console.log(Object.keys(person))
+
+    number = 19
+    console.log(person.age)
+
+    person.age = 20
+    console.log(person.age)
+
+</script>
+</html>

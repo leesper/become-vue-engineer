@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h2>欢迎回来，{{ name }}</h2>
+        <label for="xing">姓</label>
+        <input type="text" id="xing" v-model="last">
+        <br>
+        <label for="ming">名</label>
+        <input type="text" id="ming" v-model="first">
+        <div>{{ fullName }}</div>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+        el: '#root',
+        data: {
+            name: 'leesper',
+            first: '',
+            last: '',
+        },
+        methods: {
+            showInfo(e) {
+                // alert('同学你好')
+                console.log(e.target)
+            },
+            showMsg(msg) {
+                console.log(msg)
+            },
+            demo() {
+                for (let i = 0; i < 100000; i++) {
+                    console.log('#')
+                }
+                console.log('get tired')
+            }
+        },
+        computed: {
+            fullName() {
+                return this.last + '-' + this.first
+            }
+        }
+    })
+</script>
+</html>

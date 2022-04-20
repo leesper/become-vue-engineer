@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天气案例</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="root">
+        <h2>今天天气很 {{ info }}</h2>
+        <button @click="handleWeather">切换天气</button>
+
+        <h2>{{ numbers.a }}</h2>
+        <button @click="numbers.a++">点我加a</button>
+
+        <h2>{{ numbers.b }}</h2>
+        <button @click="numbers.b++">点我加b</button>
+    </div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip = false
+
+    new Vue({
+      el: '#root', 
+      data: {
+          isHot: true,
+          numbers: {
+              a: 0,
+              b: 0
+          }
+      },
+      computed: {
+          info() {
+              return this.isHot ? '炎热' : '凉爽'
+          }
+      },
+      watch: {
+          isHot(next, prev) {
+              console.log('之前是' + prev + '，现在是' + next)
+          },
+          'numbers.a': {
+              handler(next, prev) {
+                  console.log('a发生改变' + next + ' ' + prev)
+              }
+          }
+      },
+      methods: {
+          handleWeather() {
+              this.isHot = !this.isHot
+          }
+      },
+    })
+</script>
+</html>
